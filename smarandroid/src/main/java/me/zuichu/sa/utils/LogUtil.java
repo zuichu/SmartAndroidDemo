@@ -228,4 +228,8 @@ public class LogUtil {
             Log.wtf(tag, FileUtil.formatXML(log));
         }
     }
+
+    public static void logSave(String log, String path) {
+        FileUtil.writeText(log, path);
+    }
 }

@@ -58,7 +58,7 @@ public class AppUtil {
      * @return the App VersionCode
      */
 
-    public static int getVerCode(Context context) {
+    public static int getVersionCode(Context context) {
         int verCode = -1;
         try {
             verCode = context.getPackageManager().getPackageInfo(
@@ -76,7 +76,7 @@ public class AppUtil {
      * @return the App VersionName
      */
 
-    public static String getVerName(Context context) {
+    public static String getVersionName(Context context) {
         String verName = "";
         try {
             verName = context.getPackageManager().getPackageInfo(

@@ -18,6 +18,7 @@ import me.zuichu.sa.recyclerview.view.ProgressStyle;
 import me.zuichu.sa.recyclerview.view.SmartRecyclerview;
 import me.zuichu.sa.utils.FileUtil;
 import me.zuichu.sa.utils.LogUtil;
+import me.zuichu.sa.utils.ToastUtil;
 import me.zuichu.smartandroiddemo.adapter.MainAdapter;
 
 public class MainActivity extends AppCompatActivity implements SmartRecyclerview.LoadingListener, BaseSmartAdapter.OnRecyclerViewItemClickListener, BaseSmartAdapter.OnRecyclerViewItemLongClickListener {
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements SmartRecyclerview
     }
 
     private void initView() {
-        FileUtil.writeText("内容",Environment.getExternalStorageDirectory()+"/ABCD/test/abc.txt");
+        FileUtil.writeText("内容", Environment.getExternalStorageDirectory() + "/ABCD/test/abc.txt");
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerview.setLayoutManager(linearLayoutManager);
@@ -59,7 +60,9 @@ public class MainActivity extends AppCompatActivity implements SmartRecyclerview
         mainAdapter.setOnItemLongClickListener(this);
         LogUtil.logJsonI("{\"Json解析\":\"支持格式化高亮折叠\",\"支持XML转换\":\"支持XML转换Json,Json转XML\",\"Json格式验证\":\"更详细准确的错误信息\"}");
         LogUtil.logXmlI("<?xml version=\"1.0\" encoding=\"utf-8\"?><shape xmlns:android=\"http://schemas.android.com/apk/res/android\"><corners android:radius=\"5dp\" /><solid android:color=\"@android:color/black\" /></shape>");
-
+        FileUtil.createNewFile(Environment.getExternalStorageDirectory() + "/abc/abc.txt");
+        LogUtil.logSave("测试Log", Environment.getExternalStorageDirectory() + "/abc/abc.txt");
+        ToastUtil.showToast(this,FileUtil.getFileSize(this,Environment.getExternalStorageDirectory() + "/blink.log"));
     }
 
     @Override

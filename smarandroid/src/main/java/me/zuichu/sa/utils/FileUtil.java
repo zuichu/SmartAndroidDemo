@@ -287,4 +287,44 @@ public class FileUtil {
         }
     }
 
+    public static void createNewFile(String path) {
+        String fileName = path.split(File.separator)[path.split(File.separator).length - 1];
+        String filePath = path.replace(fileName, "");
+        createDictionary(filePath);
+        createFile(path);
+    }
+
+    public static String getFileName(String path) {
+        int index = path.lastIndexOf(File.separator);
+        if (index >= 0) {
+            return path.substring(index + 1);
+        }
+        return path;
+    }
+
+    public static boolean deleteAllFile(final File path) {
+        if (path.isDirectory()) {
+            final File[] files = path.listFiles();
+            if (files != null) {
+                for (final File child : files) {
+                    deleteAllFile(child);
+                }
+            }
+        }
+        return path.delete();
+    }
+
+    public static void cleanDir(File dir) {
+        if (dir.isDirectory()) {
+            String[] children = dir.list();
+            int count = children.length;
+            for (int i = 0; i < count; i++) {
+                File file = new File(dir, children[i]);
+                if (file.isFile()) {
+                    file.delete();
+                }
+            }
+        }
+    }
+
 }
